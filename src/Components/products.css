@@ -1,0 +1,45 @@
+ 
+ .card:hover .addto-Cart{
+    display: block;
+   color: #ffff;
+   border: 1px solid rgb(184, 184, 228);
+   transition: display 1s;
+   
+  
+}
+.addto-Cart{
+ display: none;
+ color:rgb(173, 171, 171)
+
+}
+
+
+.buyNow{
+    background-color: red;
+    position: relative;
+    animation-name: example;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;  
+}
+
+.addto-Cart,.buyNow:hover{
+    animation-play-state:paused;
+    cursor:pointer;
+    }
+
+
+@keyframes example {
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:rgb(255, 174, 0); left:200px; top:0px;}
+    50%  {background-color:grey; left : 0px; top:0px;}
+    75%  {background-color: green; left:200px ; top:0px;}
+    100% {background-color: purple; left:0px; top:0px;}
+    }
+
+ .addto-Cart:active{
+    background-color: rgb(216, 215, 214);
+    color:rgb(75, 74, 74);
+    transition: all 0.3s;
+    color:#6098c9
+}
