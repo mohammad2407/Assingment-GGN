@@ -26,13 +26,13 @@ export const Cart = () => {
   const dispatch = useDispatch()
   const fetchProducts = async () => {
       const response = await axios
-      .get("http://localhost:3002/cart")
+      .get("http://localhost:3009/cart")
       .catch((err) => {console.log("err",err)});
       dispatch(cartProducts( response.data))
       console.log(response.data)
   }
   const deleteCartItem = (cartItem) => {
-    axios.delete(`http://localhost:3002/cart/${cartItem.id}`, {
+    axios.delete(`http://localhost:3009/cart/${cartItem.id}`, {
       headers: {
         "x-access-token": "token-value",
       },

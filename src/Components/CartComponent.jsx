@@ -131,15 +131,17 @@ export const CartComponent = ({ deleteCartItem, cartState }) => {
 
   let sum = 0;
   cartProducts.forEach(element => {
-    //   sum += (parseInt(element.value)*parseInt(element.price))
+
+
     sum = sum + (element.value * Math.floor(element.price))
     console.log(sum)
   });
-  // console.log(sum)
+
+
   const handleValue = (val, cartItem) => {
     val = parseInt(val)
     const id = cartItem.id
-    axios.put(`http://localhost:3002/cart/${cartItem.id}`, { ...cartItem, value: val })
+    axios.put(`http://localhost:3009/cart/${cartItem.id}`, { ...cartItem, value: val })
       .then(() => dispatch(changeQuantity({ val, id })))
   }
 
@@ -176,7 +178,7 @@ export const CartComponent = ({ deleteCartItem, cartState }) => {
             </DelAdd>
             <DelAdd className="delAdd">
               <Divcon>
-              <FavoriteIcon />
+                <FavoriteIcon />
               </Divcon>
               <Divtxt>
                 Wishlist

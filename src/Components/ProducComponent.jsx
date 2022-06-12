@@ -135,7 +135,7 @@ export const ProducComponent = () => {
             value: 1,
         }
 
-        axios.post("http://localhost:3002/cart", payload)
+        axios.post("http://localhost:3009/cart", payload)
 
     }
 
