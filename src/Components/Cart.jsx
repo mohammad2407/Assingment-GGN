@@ -22,7 +22,7 @@ const CartContainer = styled.div`
 
 export const Cart = () => {
   // const cartProducts = useSelector((state) => state.allProducts.cart)
-  const {cartState, setCartState} = useState(false)
+  // const {cartState, setCartState} = useState(false)
   const dispatch = useDispatch()
   const fetchProducts = async () => {
       const response = await axios
@@ -31,7 +31,6 @@ export const Cart = () => {
       dispatch(cartProducts( response.data))
       console.log(response.data)
   }
-console.log(cartState)
   const deleteCartItem = (cartItem) => {
     axios.delete(`http://localhost:3002/cart/${cartItem.id}`, {
       headers: {
@@ -45,19 +44,14 @@ console.log(cartState)
 
   useEffect (() =>{
     fetchProducts()
-    
+  
   }, [])
 
-if(cartState === false){
-  return (
-    <div>Is Loading...</div>
-  )
-}
-else{
+
   return (
     <CartContainer>
-      <CartComponent deleteCartItem = {deleteCartItem} cartState />
+      <CartComponent deleteCartItem = {deleteCartItem} cartState  />
     </CartContainer>
   )
-}
+
 }
