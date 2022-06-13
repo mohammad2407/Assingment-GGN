@@ -1,12 +1,12 @@
 import { SELECTED_PRODUCT } from "../Actions/action";
 import {SET_PRODUCTS} from "../Actions/action"
 import {SET_CART_PRODUCTS} from "../Actions/action"
-import {CHANGE_QUANTITY, CART_STATUS} from "../Actions/action"
+import {CHANGE_QUANTITY, ADDTO_WISHLIST} from "../Actions/action"
 
 const initialState = {
     products : [],
     cart : [],
-    cartStatus:true,
+    wishlist :[],
 }
 export const productReducer = (state = initialState, {payload,type}) =>{
 
@@ -40,7 +40,12 @@ export const productReducer = (state = initialState, {payload,type}) =>{
                 ...state,
                 cart:updatedCart,
             }
-            
+
+            case ADDTO_WISHLIST:
+                return{
+                    ...state,
+                    wishlist:payload,
+                }
             // case CART_STATUS:
             //     if(payload.cartstate == false){
 

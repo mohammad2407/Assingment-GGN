@@ -1,10 +1,9 @@
 import React, { useEffect,useState } from 'react'
-import { cartProducts } from '../Redux/Actions/action';
 import axios from 'axios'
 import styled from "styled-components"
-import { useDispatch} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import { CartComponent } from './CartComponent';
-
+import { cartProducts } from '../Redux/Actions/action';
 
 const CartContainer = styled.div`
    width: 70%;
@@ -21,8 +20,9 @@ const CartContainer = styled.div`
 `
 
 export const Cart = () => {
-  // const cartProducts = useSelector((state) => state.allProducts.cart)
-  // const {cartState, setCartState} = useState(false)
+  const Products = useSelector((state) => state.allProducts.cart)
+  const [cartState, setCartState] = useState(false)
+  
   const dispatch = useDispatch()
   const fetchProducts = async () => {
       const response = await axios
@@ -31,26 +31,46 @@ export const Cart = () => {
       dispatch(cartProducts( response.data))
       console.log(response.data)
   }
+
+
+  const addToWishlist = (cartItem) =>{
+    const payload ={
+      ...cartItem
+    }
+    axios.post(`http://localhost:3009/wishlist`, payload).then(() => deleteCartItem(cartItem))
+    
+
+  }
+
+
+
   const deleteCartItem = (cartItem) => {
+    console.log("delete",cartItem)
+    if( Products.length == 1 ){
+      alert("This will empty Your cart")
+    }
     axios.delete(`http://localhost:3009/cart/${cartItem.id}`, {
       headers: {
         "x-access-token": "token-value",
       },
     })
-    
-      window.location.reload(false)
+    if(cartProducts.length > 0){
+      setTimeout(() => fetchProducts(),0)
+    }
+      setTimeout(() => setCartState(true),100)
+
   }
  
 
   useEffect (() =>{
     fetchProducts()
-  
   }, [])
+
 
 
   return (
     <CartContainer>
-      <CartComponent deleteCartItem = {deleteCartItem} cartState  />
+      <CartComponent deleteCartItem = {deleteCartItem} cartState = {cartState} addToWishlist = {addToWishlist}/>
     </CartContainer>
   )
 

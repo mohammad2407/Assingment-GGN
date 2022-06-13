@@ -1,12 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Stack from '@mui/material/Stack';
 import Rating from '@mui/material/Rating';
 import './products.css'
 import axios from 'axios';
-import Loading from '../Loader/Loading';
-import { Category } from '@mui/icons-material';
+import {cartProducts} from '../Redux/Actions/action'
 const ImageCard = styled.div`
 width:100%;
 height:160px;
@@ -126,16 +125,17 @@ p {
 
 export const ProducComponent = () => {
     const products = useSelector((state) => state.allProducts.products)
+    const disptch = useDispatch()
     console.log(products)
 
     const addtoCart = (product) => {
-
         const payload = {
             ...product,
             value: 1,
         }
 
         axios.post("http://localhost:3009/cart", payload)
+        .then(() => disptch(cartProducts(product)))
 
     }
 
@@ -181,7 +181,6 @@ export const ProducComponent = () => {
         return (
 
             <Loader>
-
                 <div className='loader'></div>
             </Loader>
 

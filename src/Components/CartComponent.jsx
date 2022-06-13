@@ -7,6 +7,7 @@ import { Add } from './ProducComponent'
 import { changeQuantity } from '../Redux/Actions/action'
 import DeleteIcon from '@mui/icons-material/Delete';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import Loading from '../Loader/Loading'
 const CartCard = styled.div`
   width: 90%;
   height: 150px;
@@ -125,7 +126,7 @@ const Divtxt = styled.div`
  width:fit-content;
 `
 
-export const CartComponent = ({ deleteCartItem, cartState }) => {
+export const CartComponent = ({ deleteCartItem, cartState, addToWishlist }) => {
   const cartProducts = useSelector((state) => state.allProducts.cart)
   const dispatch = useDispatch()
 
@@ -176,7 +177,7 @@ export const CartComponent = ({ deleteCartItem, cartState }) => {
               <Divtxt >Remove</Divtxt>
 
             </DelAdd>
-            <DelAdd className="delAdd">
+            <DelAdd onClick={() => addToWishlist(cartItem)} className = "delAdd" >
               <Divcon>
                 <FavoriteIcon />
               </Divcon>
@@ -204,9 +205,9 @@ export const CartComponent = ({ deleteCartItem, cartState }) => {
 
     )
   }
-  else if (cartState == false) {
+  else if (cartState == false && cartProducts.length > 0 ) {
     return (
-      <div>Is Loading....</div>
+      <Loading></Loading>
     )
   }
   else {

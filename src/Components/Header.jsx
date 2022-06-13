@@ -17,6 +17,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import {Link} from 'react-router-dom'
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useSelector } from 'react-redux';
 
 
 
@@ -61,6 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const Header = () => {
+  const {wishlist, cart} = useSelector((state) => (state.allProducts))
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -125,9 +127,11 @@ export const Header = () => {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
+          <Link to={`/wishlist`} >
+          <Badge badgeContent={wishlist.length} color="error">
+            <FavoriteIcon />
           </Badge>
+          </Link>
         </IconButton>
         <p>Messages</p>
       </MenuItem>
@@ -139,7 +143,7 @@ export const Header = () => {
           color="inherit"
         >
           <Link to={`/cart`}>
-          <Badge badgeContent={7} color="error">
+          <Badge badgeContent={cart.length} color="error">
             <ShoppingCartIcon />
           </Badge>
           </Link>
@@ -175,6 +179,7 @@ export const Header = () => {
           >
             {/* <MenuIcon /> */}
           </IconButton>
+          <Link to={"/"} style = {{textDecoration:"none"}} >
           <Typography
             variant="h6"
             noWrap
@@ -183,6 +188,7 @@ export const Header = () => {
           >
             GGNation
           </Typography>
+          </Link>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -195,8 +201,10 @@ export const Header = () => {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={wishlist.length} color="error">
+            <Link to={`/wishlist`}>
                 <FavoriteIcon />
+            </Link>
               </Badge>
             </IconButton>
             <IconButton
@@ -205,7 +213,7 @@ export const Header = () => {
               color="inherit"
             >
 
-              <Badge badgeContent={7} color="error" style={{marginTop:'0px'}}>
+              <Badge badgeContent={cart.length} color="error" style={{marginTop:'0px'}}>
                 <Link to={`/cart`} style = {{color:"#fff", padding:"0",marginTop:"0"}}>
                 <ShoppingCartIcon />
                 </Link>

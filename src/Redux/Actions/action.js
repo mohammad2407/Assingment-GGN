@@ -4,6 +4,7 @@ export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 export const SET_CART_PRODUCTS = "SET_CART_PRODUCTS"
 export const CHANGE_QUANTITY  = "CHANGE_QUANTITY"
 export const CART_STATUS  = "CART_STATUS"
+export const ADDTO_WISHLIST = "ADDTO_WISHLIST"
 export const setProducts =(products) =>{
     return {
         type : SET_PRODUCTS,
@@ -38,5 +39,12 @@ export const setCartStatus =(status) =>{
         payload:status
     }
 } 
+
+export const setWishlist = (wishlist) =>{
+    return{
+        type: ADDTO_WISHLIST,
+        payload :wishlist
+    }
+}
 
 

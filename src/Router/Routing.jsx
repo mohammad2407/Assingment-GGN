@@ -4,6 +4,7 @@ import { Cart } from '../Components/Cart'
 // import { Header } from '../Components/Header'
 import { ProductList } from '../Components/ProductList'
 import { SingleProduct } from '../Components/SingleProduct'
+import { WishList } from '../Components/Wishlist'
 
 
 const Routing = () => {
@@ -13,8 +14,8 @@ const Routing = () => {
             <Route path='/' element = {<ProductList />}></Route>
             <Route path = '/cart' element = {<Cart />} ></Route>
             <Route path='/Products/:productid' element = {<SingleProduct />} />
-
-        </Routes>
+            <Route path='/wishlist' element = {<WishList />} />
+        </Routes> 
       
     </div>
   )
