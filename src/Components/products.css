@@ -1,3 +1,4 @@
+ 
  body {
      background-color: #e8eaec;
  }
@@ -100,7 +101,7 @@
      }
  }
 
- .delAdd .addto-Cart:active {
+ .addto-Cart:active {
      background-color: rgb(216, 215, 214);
      color: rgb(75, 74, 74);
      transition: all 0.3s;

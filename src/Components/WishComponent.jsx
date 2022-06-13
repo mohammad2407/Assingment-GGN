@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
@@ -60,9 +61,12 @@ const BuyNow = styled(Add)`
      cursor:pointer;
    };
 
-   @media(max-width:1024){
+   @media(max-width:1024px){
      margin-top:-40px;
      width:30%;
+   };
+   @media(max-width:724px){
+    margin-top:
    }
 `
 const DescCard = styled.div`
@@ -147,7 +151,7 @@ const renderedList = wishProducts.map((wishItem) => {
           </DelAdd>
           <DelAdd onClick={() => AddtoCart(wishItem)}>
             <Divcon>
-              <FavoriteIcon />
+              < ShoppingCartIcon/>
             </Divcon>
             <Divtxt>
               Add to Cart

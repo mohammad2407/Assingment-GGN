@@ -133,7 +133,7 @@ export const Header = () => {
           </Badge>
           </Link>
         </IconButton>
-        <p>Messages</p>
+        <p>Favorites</p>
       </MenuItem>
     
       <MenuItem>
@@ -148,7 +148,7 @@ export const Header = () => {
           </Badge>
           </Link>
         </IconButton>
-        <p>Notifications</p>
+        <p>Cart</p>
       </MenuItem>
         
       <MenuItem onClick={handleProfileMenuOpen}>

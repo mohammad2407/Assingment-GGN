@@ -14,7 +14,16 @@ const CartContainer = styled.div`
    margin:auto;
    margin-left: 200px ;
    padding: 20px;
-   border: 1px solid #acaaa9
+   border: 1px solid #acaaa9;
+
+   @media(max-width:726px){
+    width:80%;
+    margin-left:100px;
+   };
+   @media(max-width:500px){
+    width:80%;
+    margin-left: 50px
+   }
    
    
 `
