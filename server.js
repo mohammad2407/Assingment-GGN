@@ -9,7 +9,7 @@ const middlewares = jsonServer.defaults({
 }
 )
 
-const port = precess.env.PORT || 5000
+const port = Process.env.PORT || 5000
 
 server.use(middlewares)
 server.use(
