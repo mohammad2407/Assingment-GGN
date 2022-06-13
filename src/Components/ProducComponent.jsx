@@ -143,7 +143,7 @@ export const ProducComponent = () => {
         const { image, title, price, category, rating, id } = product
         return (
 
-            <Card className='card'>
+            <Card className='card' key={id}>
                 <ImageCard img={image}>
                 </ImageCard>
                 <Add className="addto-Cart" onClick={() => addtoCart(product)}>

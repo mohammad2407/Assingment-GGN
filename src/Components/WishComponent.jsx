@@ -62,12 +62,13 @@ const BuyNow = styled(Add)`
    };
 
    @media(max-width:1024px){
-     margin-top:-40px;
      width:30%;
    };
-   @media(max-width:724px){
-    margin-top:
-   }
+
+   @media(max-width:768px){
+    margin-top:110px;
+    width: 30%;
+   };
 `
 const DescCard = styled.div`
 width: 85%;
@@ -133,7 +134,7 @@ export const WishComponent = ( {deleteWishItem, cartState, AddtoCart}) => {
 const renderedList = wishProducts.map((wishItem) => {
   const { title, id, price, description, rating, value, image } = wishItem
   return (
-    <CartCard>
+    <CartCard >
       <ImageCard img={image}>
       </ImageCard>
       <DescCard>
